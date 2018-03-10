@@ -1,0 +1,2 @@
+# ShadowBot
+Discord Bot.
