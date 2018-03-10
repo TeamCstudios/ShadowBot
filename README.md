@@ -1,2 +1,2 @@
 # ShadowBot
-Discord Bot.
+A bot created by MrJoCrafter
