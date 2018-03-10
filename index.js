@@ -4,7 +4,7 @@ var history = [];
 bot.on('message', (message) => {
   console.log('message detected');
   if(message.author.username != "Shadow Bot" && message.content != "!quote" && message.content != "!help" &&
-  message.content != "!roll"){
+  message.content != "!roll" && message.content != "!coinflip"){
     history.push(message.author.username + ': ' + message.content);
   }
   // console.log(history);
@@ -24,7 +24,7 @@ bot.on('message', (message) => {
   if(message.content == '!quote'){
     var messages = history.length;
     var random = Math.floor(Math.random() * messages);
-    message.reply(history[random]);
+    message.channel.sendMessage(history[random]);
   }
   if(message.content == '!help'){
     message.reply("\nCommands:" +
