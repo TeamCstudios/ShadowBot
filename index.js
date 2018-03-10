@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 var history = [];
 bot.on('message', (message) => {
   console.log('message detected');
-  if(message.author.username != "Shadow Bot" && message.content != "!quote" && message.content != "!help"
+  if(message.author.username != "Shadow Bot" && message.content != "!quote" && message.content != "!help" &&
   message.content != "!roll"){
     history.push(message.author.username + ': ' + message.content);
   }
