@@ -35,4 +35,4 @@ bot.on('message', (message) => {
     );
   }
 })
-bot.login('NDIxODM4OTYyMjM2MDYzNzQ1.DYW_Bg.vur6BwenOQFysr6RXkEOOKp2TpI');
+bot.login('token removed for security reasons.');
