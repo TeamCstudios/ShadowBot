@@ -15,6 +15,8 @@
 
 !join = send join link.
 
+!urban = define a word using urbandictionary.
+
 ### Want to run your own instance of this bot?
 I mean you can, but please don't, just use this link instead:
 
