@@ -149,4 +149,4 @@ bot.on('message', (message) => {
   }
 
 })
-bot.login('MTcyODMwODc0NzM0MTY2MDE2.DYdCFg.sB9wvzzxPemTj_HipmvMf3U2mcM');
+bot.login('no token for u');
