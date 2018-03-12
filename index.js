@@ -3,6 +3,12 @@ const bot = new Discord.Client();
 const owner = "MrJoCrafter";
 var history = [];
 var prefix = "!";
+var d = new Date();
+var n = d.getTime();
+bot.on('ready', () => {
+  console.log("It has been " + n + " milliseconds since Jan 1, 1970.");
+  console.log("No errors found during boot process.");
+});
 bot.on('message', (message) => {
   if(prefix == undefined){
     prefix = '!';
@@ -15,7 +21,7 @@ bot.on('message', (message) => {
   message.content != "%&!reset" && message.content != "%&!resetprefix" && !message.content.startsWith(prefix + "roll") &&
   message.content != prefix + "coinflip" && !message.content.startsWith(prefix + "urban") &&
   !message.content.startsWith(prefix + "define") && message.content != prefix + "history" && message.content != prefix + "repo" &&
-  message.content != prefix + "repository" && message.content != prefix + "join" && message.content != prefix + "joinserver"){
+  message.content != prefix + "repository" && message.content != prefix + "uptime" && message.content != prefix + "join" && message.content != prefix + "joinserver"){
     history.push(message.author.username + ': ' + message.content);
   }
 
@@ -117,12 +123,21 @@ bot.on('message', (message) => {
     "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." +
     "\n" + prefix + "repo: Link the repo." +
     "\n" + prefix + "join: Send server join link." +
+    "\n" + prefix + "uptime: Show uptime." +
     "\n" + prefix + "history: Send memory to owner (Owner Only)" +
     "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" +
     "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" +
     "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" +
     "\n" + "%&!reset: Reset the command prefix to ! . (Owner Only)"
     );
+  }
+  if(message.content == prefix + 'uptime'){
+    var x = new Date();
+    var l = x.getTime();
+    var uptime = l-n;
+    var z = uptime/1000/60/60;
+    var zx = (Math.floor(z*10000))/10000;
+    message.reply("I have been up for " + zx + " hours.");
   }
   if(Math.random() > .93){
     message.author.send("Do you own  a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591");
@@ -134,4 +149,4 @@ bot.on('message', (message) => {
   }
 
 })
-bot.login('no tokens for you foo');
+bot.login('MTcyODMwODc0NzM0MTY2MDE2.DYdCFg.sB9wvzzxPemTj_HipmvMf3U2mcM');
