@@ -140,7 +140,7 @@ bot.on('message', (message) => {
     message.reply("I have been up for " + zx + " hours.");
   }
   if(Math.random() > .93){
-    message.author.send("Do you own  a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591");
+    message.author.send("Do you own a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591");
     console.log("Advertisement Type 1 has been sent to " + message.author.username);
   }
   if(Math.random() > .97){
