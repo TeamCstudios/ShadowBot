@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const config = require('./config.json');
 const owner = "MrJoCrafter";
 var history = [];
 var prefix = "!";
@@ -149,4 +150,4 @@ bot.on('message', (message) => {
   }
 
 })
-bot.login('no token for u');
+bot.login(config.token);
