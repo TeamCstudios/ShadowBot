@@ -9,15 +9,16 @@
 
 !quote = pull a message from the bot's memory.
 
-!define = define a word using merriam-webster.
+!define = returns a link to the word on merriam-webster.
 
 !repo = link to the repository.
 
 !join = send join link.
 
-!urban = define a word using urbandictionary.
+!urban = returns a link to the word on urbandictionary.
 
 ### Want to run your own instance of this bot?
-I mean you can, but please don't, just use this link instead:
 
-https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591
+I mean you can, but please don't, just add the bot via this link instead:
+
+https://discordapp.com/api/oauth2/authorize?client_id=200052549280071680&permissions=8&scope=bot
