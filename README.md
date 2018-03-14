@@ -9,13 +9,15 @@
 
 !quote = pull a message from the bot's memory.
 
-!define = returns a link to the word on merriam-webster.
+!define = defines the word using merriam-webster.
 
 !repo = link to the repository.
 
 !join = send join link.
 
-!urban = returns a link to the word on urbandictionary.
+!urban = defines the word using urbandictionary.
+
+!uptime = returns the bot's uptime to the nearest ten-thousandth of an hour.
 
 ### Want to run your own instance of this bot?
 
