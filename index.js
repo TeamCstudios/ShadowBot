@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json');
 const owner = "MrJoCrafter";
+const owner_discrim = "#4310";
 var history = [];
 var prefix = "!";
 var d = new Date();
@@ -9,6 +10,8 @@ var n = d.getTime();
 bot.on('ready', () => {
   console.log("It has been " + n + " milliseconds since Jan 1, 1970.");
   console.log("No errors found during boot process.");
+  console.log("Welcome, " + owner + owner_discrim + ".");
+  console.log("I am currently using token " + config.token + ".");
 });
 bot.on('message', (message) => {
   if(prefix == undefined){
@@ -17,7 +20,7 @@ bot.on('message', (message) => {
   console.log('message detected');
 
   //This statement makes sure that the message is a valid message, then adds it to memory.
-  if(message.author.username != "DuckHunt" && message.author.username != "ShadowBot" && message.author.username != "Shadow Bot" &&
+  if(message.author.username != "CahBot" && message.author.username != "DuckHunt" && message.author.username != "ShadowBot" && message.author.username != "Shadow Bot" &&
   message.content != prefix + "quote" && message.content != prefix + "help" && !message.content.startsWith("%&!prefix ") &&
   message.content != "%&!reset" && message.content != "%&!resetprefix" && !message.content.startsWith(prefix + "roll") &&
   message.content != prefix + "coinflip" && !message.content.startsWith(prefix + "urban") &&
@@ -115,7 +118,7 @@ bot.on('message', (message) => {
 
   //Show all commands
   if(message.content == prefix + 'help'){
-    message.reply("\n" + "Commands:" +
+    message.reply("```\n" + "Commands:" +
     "\n" + prefix + "help: Show all commands." +
     "\n" + prefix + "quote: Quote a random message from this channel!" +
     "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." +
@@ -129,7 +132,7 @@ bot.on('message', (message) => {
     "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" +
     "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" +
     "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" +
-    "\n" + "%&!reset: Reset the command prefix to ! . (Owner Only)"
+    "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```"
     );
   }
   if(message.content == prefix + 'uptime'){
@@ -140,11 +143,11 @@ bot.on('message', (message) => {
     var zx = (Math.floor(z*10000))/10000;
     message.reply("I have been up for " + zx + " hours.");
   }
-  if(Math.random() > .93){
+  if(Math.random() > .95){
     message.author.send("Do you own a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591");
     console.log("Advertisement Type 1 has been sent to " + message.author.username);
   }
-  if(Math.random() > .97){
+  if(Math.random() > .98){
     message.author.send("Do you have any problems with this bot? If so, please report them here: https://github.com/TeamCstudios/ShadowBot/issues");
     console.log("Advertisement Type 2 has been sent to " + message.author.username);
   }
