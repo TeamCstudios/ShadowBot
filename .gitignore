@@ -1,3 +1,4 @@
 node_modules/
 logs/*.txt
 package-lock.json
+config.json
