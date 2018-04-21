@@ -1,17 +1,24 @@
+// Define discord stuff
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json');
+
+// Define bot startup thingies
 const owner = "MrJoCrafter#4310";
 var history = [];
 var prefix = "!";
 var d = new Date();
 var n = d.getTime();
+
+// Prepare bot
 bot.on('ready', () => {
   console.log("It has been " + n + " milliseconds since Jan 1, 1970.");
   console.log("No errors found during boot process.");
   console.log("Welcome, " + owner + ".");
   console.log("I am currently using token " + config.token + ".");
 });
+
+// Go for it
 bot.on('message', (message) => {
   if(prefix == undefined){
     prefix = '!';
