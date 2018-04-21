@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json');
-const owner = "MrJoCrafter";
-const owner_discrim = "#4310";
+const owner = "MrJoCrafter#4310";
 var history = [];
 var prefix = "!";
 var d = new Date();
@@ -10,7 +9,7 @@ var n = d.getTime();
 bot.on('ready', () => {
   console.log("It has been " + n + " milliseconds since Jan 1, 1970.");
   console.log("No errors found during boot process.");
-  console.log("Welcome, " + owner + owner_discrim + ".");
+  console.log("Welcome, " + owner + ".");
   console.log("I am currently using token " + config.token + ".");
 });
 bot.on('message', (message) => {
@@ -30,7 +29,7 @@ bot.on('message', (message) => {
   }
 
   //send history to owner
-  if(message.content == prefix + 'history' && message.author.username == owner){
+  if(message.content == prefix + 'history' && message.author.tag == owner){
     message.channel.send("History retrieved!");
     message.author.send(history);
   }
@@ -101,7 +100,7 @@ bot.on('message', (message) => {
   }
 
   //Clear History
-  if(message.content == prefix + 'purgehistory' && message.author.username == owner){
+  if(message.content == prefix + 'purgehistory' && message.author.tag == owner){
     history = [];
     console.log("History successfully purged.");
   }
