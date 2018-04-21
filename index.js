@@ -8,7 +8,8 @@ const owner = "MrJoCrafter#4310";
 var history = [];
 var prefix = "!";
 var d = new Date();
-var n = d.getTime();
+var n = d.getTime();;
+const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"]
 
 // Prepare bot
 bot.on('ready', () => {
@@ -26,8 +27,7 @@ bot.on('message', (message) => {
   console.log('message detected');
 
   //This statement makes sure that the message is a valid message, then adds it to memory.
-  if(message.author.username != "CahBot" && message.author.username != "DuckHunt" && message.author.username != "ShadowBot" && message.author.username != "Shadow Bot" &&
-  message.content != prefix + "quote" && message.content != prefix + "help" && !message.content.startsWith("%&!prefix ") &&
+  if(!dontlog.includes(message.author.username) && message.content != prefix + "quote" && message.content != prefix + "help" && !message.content.startsWith("%&!prefix ") &&
   message.content != "%&!reset" && message.content != "%&!resetprefix" && !message.content.startsWith(prefix + "roll") &&
   message.content != prefix + "coinflip" && !message.content.startsWith(prefix + "urban") &&
   !message.content.startsWith(prefix + "define") && message.content != prefix + "history" && message.content != prefix + "repo" &&
