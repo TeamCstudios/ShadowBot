@@ -28,7 +28,7 @@ bot.on('message', (message) => {
   console.log('message detected');
 
   //This statement makes sure that the message is a valid message, then adds it to memory.
-  if(!dontlog.includes(message.author.username) && !message.content.startsWith(prefix){
+  if(!dontlog.includes(message.author.username) && !message.content.startsWith(prefix)){
     history.push(message.author.username + ': ' + message.content);
   }
 
