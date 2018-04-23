@@ -92,9 +92,11 @@ bot.on('message', (message) => {
   }
 
   // Reset the prefix to !
-  if (message.content == '%&!reset' || message.content == '%&!resetprefix' && message.author.username == owner) {
-    prefix = '!';
-    message.channel.send("I've reset the command prefix to ! for you!");
+  if (message.content == '%&!reset' || message.content == '%&!resetprefix') {
+    if (message.author.tag == owner) {
+      prefix = '!';
+      message.channel.send("I've reset the command prefix to ! for you!");
+    }
   }
 
   // Grab a random quote from bot's memory.
