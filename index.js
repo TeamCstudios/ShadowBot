@@ -10,6 +10,7 @@ var prefix = "!";
 var d = new Date();
 var n = d.getTime();;
 const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"]
+var optout = [];
 
 // Prepare bot
 bot.on('ready', () => {
@@ -145,13 +146,21 @@ bot.on('message', (message) => {
     var zx = (Math.floor(z*10000))/10000;
     message.reply("I have been up for " + zx + " hours.");
   }
+  if(message.content == prefix + 'optout'){
+    optout.push(message.author.username);
+    message.reply("You will no longer recieve ads. Thank you for using ShadowBot!");
+  }
   if(Math.random() > .95){
-    message.author.send("Do you own a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591");
-    console.log("Advertisement Type 1 has been sent to " + message.author.username);
+    if(!optout.includes(message.author.username)){
+      message.author.send("Do you own a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591 (Opt out of these with " + prefix + "optout)");
+      console.log("Advertisement Type 1 has been sent to " + message.author.username);
+    }
   }
   if(Math.random() > .98){
-    message.author.send("Do you have any problems with this bot? If so, please report them here: https://github.com/TeamCstudios/ShadowBot/issues");
-    console.log("Advertisement Type 2 has been sent to " + message.author.username);
+    if(!optout.includes(message.author.username)){
+      message.author.send("Do you have any problems with this bot? If so, please report them here: https://github.com/TeamCstudios/ShadowBot/issues (Opt out of these with " + prefix + "optout)");
+      console.log("Advertisement Type 2 has been sent to " + message.author.username);
+    }
   }
 
 })
