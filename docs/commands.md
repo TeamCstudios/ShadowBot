@@ -3,20 +3,47 @@ title: ShadowBot Commands
 layout: default
 ---
 
-## M'Commands
+### Commands
 
-!help = show commands.
+#### `!help`
+Show all commands.
 
-!coinflip = flip a coin you bean.
+#### `!quote`
+Quote a random message from this channel!
 
-!roll = roll a dice.
+#### `!roll #dx`
+Roll # of x-sided dice. Example
+ '!roll 4d6' rolls 4 six-sided dice.
 
-!quote = pull a message from the bot's memory.
+#### `!coinflip`
+Flip a coin.
 
-!define = defines the word using merriam-webster.
+#### `!define [word]`
+Define a word.
 
-!repo = link to the repository.
+#### `!urban [word]`
+Define a word using Urban Dictionary.
 
-!join = send join link.
+#### `!repo`
+Link the repo.
 
-!urban = defines the word using urbandictionary.
+#### `!join`
+Send server join link.
+
+#### `!uptime`
+Show uptime.
+
+#### `!history`
+Send memory to owner (Owner Only)
+
+#### `!prunehistory [x]`
+Delete the first x item(s) of history (Owner Only)
+
+#### `!purgehistory`
+Delete all of history (Owner Only)
+
+#### `%&!prefix [prefix]`
+Change the command prefix. (Owner Only)
+
+#### `%&!reset`
+Reset the command!to !. (Owner Only)
