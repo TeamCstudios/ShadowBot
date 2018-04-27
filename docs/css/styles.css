@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Knewave', cursive;
+  background-color: #f0ebd8;
+}
+
+/* Style the side navigation */
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #1d2d44;
+  overflow-x: hidden;
+}
+
+/* Side navigation links */
+
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+
+.sidenav a:hover {
+  background-color: #748cab;
+  color: black;
+}
+
+/* Style the content */
+
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+}
+
+section img {
+  float: right;
+  /* changed */
+  margin-left: 60px;
+  /* changed */
+  border-radius: 10px;
+  /* changed */
+  border: 1px solid #000000;
+  /* changed */
+  box-shadow: 2px 2px 2px;
+  /* changed */
+  margin-bottom: 15px;
+}
+
+div.content {
+  width: 80%;
+}
+
+h1 {
+  display: none;
+}
+
+h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h2 {
+  font-size: 60px;
+  color: #0d1321;
+}
+
+h3 {
+  font-size: 40px;
+  color: #0d1321;
+}
+
+h4 {
+  font-size: 20px;
+  color: #0d1321;
+}
+
+p {
+  font-family: 'Acme', sans-serif;
+  color: #0d1321;
+  font-size: 18px;
+}
+
+footer {
+  padding-left: 200px;
+  margin: 10px auto;
+  width: 955px;
+  clear: both;
+  border-top: 1px solid #000000;
+}
+
+footer a:link, footer a:visited {
+  color: #3e5c76;
+  text-decoration: none;
+}
+
+footer a:hover, footer a:active {
+  color: #748cab;
+  text-decoration: none;
+}
+
+ul a:link, ul a:visited {
+  color: #3e5c76;
+  text-decoration: none;
+}
+
+ul a:hover, ul a:active {
+  color: #748cab;
+  text-decoration: none;
+}
