@@ -84,7 +84,7 @@ bot.on('message', (message) => {
   }
 
   // Change the prefix
-  if (message.content.startsWith("%&!prefix ")) {
+  if (message.content.startsWith("%&!prefix ") && message.author.tag == owner) {
     var commandline = "%&!prefix ";
     var argument = message.content.substr(commandline.length);
     prefix = argument;
