@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 
 // Define bot startup thingies
-const owner = "Chew#6058";
+const owner = "MrJoCrafter#4310";
 var history = [];
 var prefix = "!";
 var d = new Date();
@@ -159,7 +159,7 @@ bot.on('message', (message) => {
     var zx = (Math.floor(z * 10000)) / 10000;
     message.reply("I have been up for " + zx + " hours.");
   }
-
+/*
   // Opt out of ads.
   if (message.content == prefix + 'optout') {
     optout.push(message.author.username);
@@ -179,7 +179,7 @@ bot.on('message', (message) => {
       console.log("Advertisement Type 2 has been sent to " + message.author.username);
     }
   }
-
+*/
 })
 
 // Start!
