@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 
 // Define bot startup thingies
-const owner = "MrJoCrafter#4310";
+const owner = "Chew#6058";
 var history = [];
 var prefix = "!";
 var d = new Date();
@@ -29,7 +29,7 @@ bot.on('message', (message) => {
 
   // This statement makes sure that the message is a valid message, then adds it to memory.
   if (!dontlog.includes(message.author.username) && !message.content.startsWith(prefix)) {
-    history.push(message.author.username + ': ' + message.content);
+    history.push(message.author.id + ': ' + message.content);
   }
 
   // Send history to owner
@@ -103,7 +103,30 @@ bot.on('message', (message) => {
   if (message.content == prefix + 'quote') {
     var messages = history.length;
     var random = Math.floor(Math.random() * messages);
-    message.channel.send(history[random]);
+    var hist = history[random];
+    var auth = hist.split(' ')[0];
+    auth = auth.replace('[', '');
+    auth = auth.replace(']', '');
+    auth = auth.replace(':', '')
+    var id = auth;
+    auth = bot.users.get(auth);
+    var msg = hist.split(':');
+    msg.splice(0,1);
+    msg = msg.join(":");
+    msg = msg.substring(1);
+    var iconURL = `https://cdn.discordapp.com/avatars/${id}/${auth.avatar}.webp?size=1024`;
+    var embed = {
+      "title": "Quote",
+      "description": msg,
+      "color": 2729288,
+      //"timestamp": new Date(),
+      "author": {
+        "name": auth.tag,
+        "icon_url": iconURL
+      }
+      //"fields": []
+    };
+    message.channel.send({embed});
   }
 
   // Clear the History
@@ -124,22 +147,7 @@ bot.on('message', (message) => {
 
   // Show all commands
   if (message.content == prefix + 'help') {
-    message.reply("```\n" + "Commands:" +
-      "\n" + prefix + "help: Show all commands." +
-      "\n" + prefix + "quote: Quote a random message from this channel!" +
-      "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." +
-      "\n" + prefix + "coinflip: Flip a coin." +
-      "\n" + prefix + "define [word]: Define a word." +
-      "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." +
-      "\n" + prefix + "repo: Link the repo." +
-      "\n" + prefix + "join: Send server join link." +
-      "\n" + prefix + "uptime: Show uptime." +
-      "\n" + prefix + "history: Send memory to owner (Owner Only)" +
-      "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" +
-      "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" +
-      "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" +
-      "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```"
-    );
+    message.reply("```\n" + "Commands:" + "\n" + prefix + "help: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
   }
 
   // Return the bot's uptime in hours.
