@@ -3,6 +3,7 @@ title: Welcome to ShadowBot
 layout: default
 ---
 
-## What?
+## What is this?
+A bot created by me, MrJoCrafter.
 
-Bagels!
+####[Commands](commands)
