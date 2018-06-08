@@ -8,9 +8,8 @@ const owner = "MrJoCrafter#4310";
 var history = [];
 var prefix = "!";
 var d = new Date();
-var n = d.getTime();;
-const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"]
-var optout = [];
+var n = d.getTime();
+const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"];
 
 // Prepare bot
 bot.on('ready', () => {
@@ -146,8 +145,8 @@ bot.on('message', (message) => {
   }
 
   // Show all commands
-  if (message.content == prefix + 'help') {
-    message.reply("```\n" + "Commands:" + "\n" + prefix + "help: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
+  if (message.content == prefix + 'help' || message.content == prefix + 'info' || message.content == prefix + 'commands') {
+    message.reply("```\n" + "Commands:" + "\n" + prefix + "help/info/commands: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
   }
 
   // Return the bot's uptime in hours.
@@ -159,27 +158,6 @@ bot.on('message', (message) => {
     var zx = (Math.floor(z * 10000)) / 10000;
     message.reply("I have been up for " + zx + " hours.");
   }
-/*
-  // Opt out of ads.
-  if (message.content == prefix + 'optout') {
-    optout.push(message.author.username);
-    message.reply("You will no longer recieve ads. Thank you for using ShadowBot!");
-  }
-
-  // Ads....
-  if (Math.random() > .95) {
-    if (!optout.includes(message.author.username)) {
-      message.author.send("Do you own a server? If so, add me to it using this link: https://discordapp.com/oauth2/authorize?client_id=421838962236063745&scope=bot&permissions=2146958591 (Opt out of these with " + prefix + "optout)");
-      console.log("Advertisement Type 1 has been sent to " + message.author.username);
-    }
-  }
-  if (Math.random() > .98) {
-    if (!optout.includes(message.author.username)) {
-      message.author.send("Do you have any problems with this bot? If so, please report them here: https://github.com/TeamCstudios/ShadowBot/issues (Opt out of these with " + prefix + "optout)");
-      console.log("Advertisement Type 2 has been sent to " + message.author.username);
-    }
-  }
-*/
 })
 
 // Start!
