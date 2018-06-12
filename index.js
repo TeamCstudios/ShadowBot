@@ -39,7 +39,7 @@ bot.on('message', (message) => {
 
   // Send an invite bot to the link.
   if (message.content == prefix + 'join' || message.content == prefix + 'joinserver') {
-    message.channel.send("Use this link: <https://discordapp.com/api/oauth2/authorize?client_id=200052549280071680&permissions=8&scope=bot>");
+    message.channel.send("Use this link: <https://discordapp.com/api/oauth2/authorize?client_id=421838962236063745&permissions=8&scope=bot>");
   }
 
   // Send a link to the repository.

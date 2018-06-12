@@ -23,4 +23,4 @@
 
 I mean you can, but please don't, just add the bot via this link instead:
 
-https://discordapp.com/api/oauth2/authorize?client_id=200052549280071680&permissions=8&scope=bot
+https://discordapp.com/api/oauth2/authorize?client_id=421838962236063745&permissions=8&scope=bot
