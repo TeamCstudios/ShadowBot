@@ -85,10 +85,6 @@ bot.on('message', (message) => {
     message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
   }
   if (!message.content.startsWith(prefix)){
-    var test1 message.content.split("peepo");
-    if (test1.length() > 0){
-      message.author.send("Peepo.");
-    }
     var test2 message.content.split("ShadowBot");
     if (test2.length() > 0){
       message.author.send("Yes? What do you want.");
