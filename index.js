@@ -35,7 +35,7 @@ bot.on('message', (message) => {
   if (message.content == prefix + 'history' && message.author.tag == owner) {
     message.channel.send("History retrieved!");
     var hisarray = history.split("\n",30000);
-    for(i = 0; i < hisarray.length(); i++){
+    for(i = 0; i < hisarray.length; i++){
       message.author.send(hisarray[i]);
     }
   }
@@ -86,19 +86,19 @@ bot.on('message', (message) => {
   }
   if (!message.content.startsWith(prefix)){
     var test1 = message.content.split("peepo");
-    if (test1.length() > 0){
+    if (test1.length > 0){
       message.author.send("Peepo.");
     }
     var test2 = message.content.split("ShadowBot");
-    if (test2.length() > 0){
+    if (test2.length > 0){
       message.author.send("Yes? What do you want.");
     }
     var test3 = message.content.split("MrJoCrafter");
-    if (test3.length() > 0){
+    if (test3.length > 0){
       message.author.send("Please @ mention him.");
     }
     var test4 = message.content.split("heck");
-    if (test4.length() > 0){
+    if (test4.length > 0){
       message.author.send("No swearing on this christian server, please.");
     }
   }
