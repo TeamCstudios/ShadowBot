@@ -32,7 +32,7 @@ bot.on('message', (message) => {
   }
 
   // Send history to owner
-  if (message.content == prefix + 'history' && message.author.tag == owner) {
+  if (message.content == prefix + 'retrieve-history' && message.author.tag == owner) {
     message.channel.send("History retrieved!");
     var hisarray = history.split("\n");
     for(i = 0; i < hisarray.length; i++){
@@ -115,6 +115,22 @@ bot.on('message', (message) => {
     }
   }
 
+  // Send a memerator meme
+  if (message.content == prefix + 'memerator') {
+    message.channel.send("Not ready yet.");
+  }
+
+  //history commands
+  if (message.content == prefix + 'history') {
+    message.channel.send("```\n" + prefix + "bw1: Story of Bagel War I.\n" + prefix + "bw2: Story of Bagel War II." + "\n```");
+  }
+
+  if (message.content == prefix + 'bw1') {
+    message.channel.send("One day, BobTheBagel joined an IRC chat. Soon, he became a menace to certain Minecraft servers. He also did nasty things, such as ''dating'' a 9 year old. Eventually, the person who made BobTheBagel was discovered. Bob has never really stopped, but isn't much of a threat anymore.");
+  }
+  if (message.content == prefix + 'bw2') {
+    message.channel.send("One day, a rant video appeared on Youtube called 'Team CStudios Rant' by a channel named JaredTheBagel. 'Jared' also stole several Team CStudios videos. Like Bob, his real-life identity was found, but this didn't seem to stop his online activity. After a second video, his activity mysteriously stopped, and he hasn't been seen again.");
+  }
   // Grab a random quote from bot's memory.
   if (message.content == prefix + 'quote') {
     var messages = history.length;
@@ -163,7 +179,7 @@ bot.on('message', (message) => {
 
   // Show all commands
   if (message.content == prefix + 'help' || message.content == prefix + 'info' || message.content == prefix + 'commands') {
-    message.reply("```\n" + "Commands:" + "\n" + prefix + "help/info/commands: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
+    message.reply("```\n" + "Commands:" + "\n" + prefix + "help/info/commands: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "history: Show history commands." + "\n" + prefix + "memerator: Show a random memerator meme." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "retrieve-history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
   }
 
   // Return the bot's uptime in hours.
