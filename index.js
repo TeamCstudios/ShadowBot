@@ -34,9 +34,8 @@ bot.on('message', (message) => {
   // Send history to owner
   if (message.content == prefix + 'retrieve-history' && message.author.tag == owner) {
     message.channel.send("History retrieved!");
-    var hisarray = history.split("\n");
-    for(i = 0; i < hisarray.length; i++){
-      message.author.send(hisarray[i]);
+    for(i = 0; i < history.length; i++){
+      message.author.send(history[i]);
     }
   }
 
