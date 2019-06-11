@@ -85,6 +85,24 @@ bot.on('message', (message) => {
     message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
   }
 
+  var test1 message.content.split("peepo");
+  if (test1.length() > 0){
+    message.author.send("Peepo.");
+  }
+  var test2 message.content.split("ShadowBot");
+  if (test2.length() > 0){
+    message.author.send("Yes? What do you want.");
+  }
+  var test3 message.content.split("MrJoCrafter");
+  if (test3.length() > 0){
+    message.author.send("Please @ mention him.");
+  }
+  var test4 message.content.split("heck");
+  if (test4.length() > 0){
+    message.author.send("No swearing on this christian server, please.");
+  }
+
+
   // Change the prefix
   if (message.content.startsWith("%&!prefix ") && message.author.tag == owner) {
     var commandline = "%&!prefix ";
