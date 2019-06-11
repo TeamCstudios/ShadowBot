@@ -34,7 +34,10 @@ bot.on('message', (message) => {
   // Send history to owner
   if (message.content == prefix + 'history' && message.author.tag == owner) {
     message.channel.send("History retrieved!");
-    message.author.send(history);
+    var hisarray = history.split("\n",30000);
+    for(i = 0; i < hisarray.length(); i++){
+      message.author.send(hisarray[i]);
+    }
   }
 
   // Send an invite bot to the link.
