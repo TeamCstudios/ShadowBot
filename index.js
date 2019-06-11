@@ -34,7 +34,7 @@ bot.on('message', (message) => {
   // Send history to owner
   if (message.content == prefix + 'history' && message.author.tag == owner) {
     message.channel.send("History retrieved!");
-    var hisarray = history.split("\n",30000);
+    var hisarray = history.split("\n");
     for(i = 0; i < hisarray.length; i++){
       message.author.send(hisarray[i]);
     }
@@ -85,21 +85,17 @@ bot.on('message', (message) => {
     message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
   }
   if (!message.content.startsWith(prefix)){
-    var test1 = message.content.split("peepo");
+    var test1 = message.content.split("yeet");
     if (test1.length > 1){
-      message.author.send("Peepo.");
+      message.channel.send("yote");
     }
     var test2 = message.content.split("ShadowBot");
     if (test2.length > 1){
-      message.author.send("Yes? What do you want.");
+      message.channel.send("Yes? What do you want. Use " + prefix + "help to see all commands.");
     }
-    var test3 = message.content.split("MrJoCrafter");
+    var test3 = message.content.split("heck");
     if (test3.length > 1){
-      message.author.send("Please @ mention him.");
-    }
-    var test4 = message.content.split("heck");
-    if (test4.length > 1){
-      message.author.send("No swearing on this christian server, please.");
+      message.channel.send("No swearing on this christian server, please.");
     }
   }
 
