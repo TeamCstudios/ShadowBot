@@ -108,7 +108,7 @@ if(!blacklist.includes(message.channel)){
   }
 
   //Blacklist a channel
-  if (message.content.startsWith(prefix + "blacklist ") && message.author.tag == owner) {
+  if (message.content.startsWith(prefix + "blacklist") && message.author.tag == owner) {
     blacklist.push(message.channel);
     message.channel.send("I've blacklisted this channel. I will not respond to anything in the channel. However, I will still log this channel.")
   }
