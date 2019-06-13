@@ -26,7 +26,7 @@ bot.on('message', (message) => {
     prefix = '!';
   }
   console.log('message detected');
-if(!blacklist.contains(message.channel)){
+if(!blacklist.includes(message.channel)){
   // This statement makes sure that the message is a valid message, then adds it to memory.
   if (!dontlog.includes(message.author.username) && !message.content.startsWith(prefix)) {
     history.push(message.author.id + ': ' + message.content);
