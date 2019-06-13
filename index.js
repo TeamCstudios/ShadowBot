@@ -6,6 +6,7 @@ const config = require('./config.json');
 // Define bot startup thingies
 const owner = "MrJoCrafter#4310";
 var history = [];
+var blacklist = [];
 var prefix = "!";
 var d = new Date();
 var n = d.getTime();
@@ -25,7 +26,7 @@ bot.on('message', (message) => {
     prefix = '!';
   }
   console.log('message detected');
-
+if(blacklist.contains(message.channel)){
   // This statement makes sure that the message is a valid message, then adds it to memory.
   if (!dontlog.includes(message.author.username) && !message.content.startsWith(prefix)) {
     history.push(message.author.id + ': ' + message.content);
@@ -106,6 +107,12 @@ bot.on('message', (message) => {
     message.channel.send("I've set the prefix to " + prefix + " If you messed up, do %&!reset");
   }
 
+  //Blacklist a channel
+  if (message.content.startsWith(prefix + "blacklist ") && message.author.tag == owner) {
+    blacklist.push(message.channel);
+    message.channel.send("I've blacklisted this channel. I will not respond to anything in the channel. However, I will still log this channel.")
+  }
+
   // Reset the prefix to !
   if (message.content == '%&!reset' || message.content == '%&!resetprefix') {
     if (message.author.tag == owner) {
@@ -178,7 +185,7 @@ bot.on('message', (message) => {
 
   // Show all commands
   if (message.content == prefix + 'help' || message.content == prefix + 'info' || message.content == prefix + 'commands') {
-    message.reply("```\n" + "Commands:" + "\n" + prefix + "help/info/commands: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "history: Show history commands." + "\n" + prefix + "memerator: Show a random memerator meme." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "retrieve-history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
+    message.reply("```\n" + "Commands:" + "\n" + prefix + "help/info/commands: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "history: Show history commands." + "\n" + prefix + "memerator: Show a random memerator meme." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "blacklist: Stop bot from responding in a channel. (Owner Only)" + "\n" + prefix + "retrieve-history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
   }
 
   // Return the bot's uptime in hours.
@@ -190,6 +197,7 @@ bot.on('message', (message) => {
     var zx = (Math.floor(z * 10000)) / 10000;
     message.reply("I have been up for " + zx + " hours.");
   }
+}
 })
 
 // Start!
