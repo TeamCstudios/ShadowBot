@@ -49,11 +49,17 @@ if(!blacklist.includes(message.channel)){
   if (message.content == prefix + 'repo' || message.content == prefix + 'repository') {
     message.channel.send("<https://github.com/TeamCstudios/ShadowBot>");
   }
+
   // Define a word using urbandictionary
   if (message.content.startsWith(prefix + "urban ")) {
     var commandline = prefix + "urban ";
     var argument = message.content.substr(commandline.length);
     message.channel.send("https://www.urbandictionary.com/define.php?term=" + argument);
+  }
+
+  // Define a word using urbandictionary
+  if (message.content.startsWith(prefix + "flushed ") || message.content.startsWith(prefix + "blush ")) {
+    message.channel.send(":flushed:");
   }
 
   // Define a word using merriam-webster
