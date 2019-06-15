@@ -58,7 +58,7 @@ if(!blacklist.includes(message.channel)){
   }
 
   // Define a word using urbandictionary
-  if (message.content.startsWith(prefix + "flushed ") || message.content.startsWith(prefix + "blush ")) {
+  if (message.content.startsWith(prefix + "flushed") || message.content.startsWith(prefix + "blush")) {
     message.channel.send(":flushed:");
   }
 
