@@ -40,6 +40,10 @@ if(!blacklist.includes(message.channel)){
     }
   }
 
+  if (message.author.tag == "Mee6#0000" || message.author.tag == "GitHub#0000"){
+    owner.send(message);
+  }
+
   // Send an invite bot to the link.
   if (message.content == prefix + 'join' || message.content == prefix + 'joinserver') {
     message.channel.send("Use this link: <https://discordapp.com/api/oauth2/authorize?client_id=421838962236063745&permissions=8&scope=bot>");
