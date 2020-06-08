@@ -93,7 +93,7 @@ if(!blacklist.includes(message.channel)){
     var dicetype = Math.floor(argumentarray[1]);
     var random = 0;
     for(var i = 0; i < dicerolled; i++){
-      random += (Math.floor(Math.random(1,dicetype + 1)));
+      random = random + Math.floor(Math.random(1,dicetype + 1));
     }
     message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
   }
