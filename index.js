@@ -35,8 +35,13 @@ if(!blacklist.includes(message.channel)){
   // Send history to owner
   if (message.content == prefix + 'retrieve-history' && message.author.tag == owner) {
     message.channel.send("History retrieved!");
+    var content = [];
     for(i = 0; i < history.length; i++){
-      message.author.send(history[i]);
+      content.push(history[i] + "\n");
+      if(i % 10 == 0 || i == history.length - 1 || (content + "").length() > 1800){
+        message.author.send(content);
+        content = [];
+      }
     }
   }
 
