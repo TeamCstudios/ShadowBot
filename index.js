@@ -144,7 +144,7 @@ if(!blacklist.includes(message.channel)){
     var auth = hist.split(' ')[0];
     auth = auth.replace('[', '');
     auth = auth.replace(']', '');
-    auth = auth.replace(':', '')
+    auth = auth.replace(':', '');
     var id = auth;
     auth = bot.users.get(auth);
     var msg = hist.split(':');
