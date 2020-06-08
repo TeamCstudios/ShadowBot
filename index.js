@@ -86,7 +86,10 @@ if(!blacklist.includes(message.channel)){
     var argumentarray = commandcut.split("d");
     var dicerolled = Math.floor(argumentarray[0]);
     var dicetype = Math.floor(argumentarray[1]);
-    var random = dicerolled * (Math.floor(Math.random() * dicetype) + 1);
+    var random;
+    for(var i = 0; i < dicerolled; i++){
+      random+= (Math.round(Math.random(1,dicetype));
+    }
     message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
   }
   if (!message.content.startsWith(prefix)){
