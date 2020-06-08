@@ -92,20 +92,6 @@ if(!blacklist.includes(message.channel)){
     }
     message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
   }
-  if (!message.content.startsWith(prefix)){
-    var test1 = message.content.split("yeet");
-    if (test1.length > 1){
-      message.channel.send("yote");
-    }
-    var test2 = message.content.split("ShadowBot");
-    if (test2.length > 1){
-      message.channel.send("Yes? What do you want. Use " + prefix + "help to see all commands.");
-    }
-    var test3 = message.content.split("heck");
-    if (test3.length > 1){
-      message.channel.send("No swearing on this christian server, please.");
-    }
-  }
 
   // Change the prefix
   if (message.content.startsWith("%&!prefix ") && message.author.tag == owner) {
@@ -148,7 +134,7 @@ if(!blacklist.includes(message.channel)){
   // Grab a random quote from bot's memory.
   if (message.content == prefix + 'quote') {
     var messages = history.length;
-    var random = Math.floor(Math.random() * messages);
+    var random = Math.floor(Math.random(0,history.length));
     var hist = history[random];
     var auth = hist.split(' ')[0];
     auth = auth.replace('[', '');
