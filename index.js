@@ -61,11 +61,6 @@ if(!blacklist.includes(message.channel)){
     message.channel.send("https://www.urbandictionary.com/define.php?term=" + argument);
   }
 
-  // Define a word using urbandictionary
-  if (message.content.startsWith(prefix + "flushed") || message.content.startsWith(prefix + "blush")) {
-    message.channel.send(":flushed:");
-  }
-
   // Define a word using merriam-webster
   if (message.content.startsWith(prefix + "define ")) {
     var commandline = prefix + "define ";
