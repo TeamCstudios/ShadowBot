@@ -91,7 +91,7 @@ if(!blacklist.includes(message.channel)){
     var argumentarray = commandcut.split("d");
     var dicerolled = Math.floor(argumentarray[0]);
     var dicetype = Math.floor(argumentarray[1]);
-    var random;
+    var random = 0;
     for(var i = 0; i < dicerolled; i++){
       random += (Math.floor(Math.random(1,dicetype + 1)));
     }
