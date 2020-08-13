@@ -1,23 +1,16 @@
 # Get lines
-he = File.readlines('index.js') { |line| line.split.map(&:to_s).join }
-he.each do |e|
-  e.delete!("\n")
-end
-start = he.index { |s| s.include?('// Show all commands') }
-finish = he.index { |s| s.include?('// Return the bot\'s uptime in hours.') }
+File.open('index.js', 'r') do |he|
+  he.each_line do |f|
+    next unless f.include?('prefix +') && f.include?('message.content')
 
-c = he[start + 3..finish - 4]
+    line = f.split('prefix + ')
+    comm = line[1]
+    if(comm.split("'").length == 1)
+      command = comm.split('"')[1]
+    else
+      command = comm.split("'")[1]
+    end
 
-c.each do |f|
-  f.gsub!('      "\n" + prefix + ', '!')
-  f.gsub!('      "\n" + ', '')
-  f.gsub!(' +', '')
-  f.delete!('"')
-  f.gsub!(' prefix ', '!')
-  f.delete!('```')
-  ar = f.split(':')
-  ar[0] = '## `' + ar[0] + '`'
-  ar[1] = ar[1][1..ar[1].length]
-  puts ar.join("\n")
-  puts "\n"
+    puts "#{command.gsub(' ', '')}"
+  end
 end
