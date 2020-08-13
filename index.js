@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 
 // Define bot startup thingies
-const owner = "MrJoCrafter#4310";
+const owner = "MrJoCrafter#4745";
 var history = [];
 var blacklist = [];
 var prefix = "!";
