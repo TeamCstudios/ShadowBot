@@ -1,7 +1,29 @@
 // Define discord stuff
-const Discord = require('discord.js');
-const bot = new Discord.Client();
 const config = require('./config.json');
+const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
+
+class ShadowBot extends AkairoClient {
+    constructor() {
+        super({
+            ownerID: '116318819298967561'
+        }, {
+            disableMentions: 'everyone'
+        });
+
+        this.commandHandler = new CommandHandler(this, {
+            directory: './commands/',
+            prefix: '!'
+        });
+
+        this.listenerHandler = new ListenerHandler(this, {
+            directory: './listeners/'
+        });
+
+        this.commandHandler.loadAll();
+        this.commandHandler.useListenerHandler(this.listenerHandler);
+        this.listenerHandler.loadAll();
+    }
+}
 
 // Define bot startup thingies
 const owner = "116318819298967561";
@@ -15,6 +37,7 @@ const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"];
 let ownerUser;
 
 // Prepare bot
+/*
 bot.on('ready' ,async () => {
     ownerUser = await bot.users.fetch(owner)
 
@@ -23,7 +46,10 @@ No errors found during boot process.
 Welcome, ${ownerUser.tag}.`)
 })
 
+ */
+
 // Go for it
+/*
 bot.on('message', async (message) => {
     let i;
     let random;
@@ -66,16 +92,6 @@ bot.on('message', async (message) => {
         }
     }
 
-    // Send an invite bot to the link.
-    if (message.content === prefix + 'join' || message.content === prefix + 'joinserver') {
-        message.channel.send("Use this link: <https://discord.com/api/oauth2/authorize?client_id=421838962236063745&permissions=8&scope=bot>");
-    }
-
-    // Send a link to the repository.
-    if (message.content === prefix + 'repo' || message.content === prefix + 'repository') {
-        message.channel.send("<https://github.com/TeamCstudios/ShadowBot>");
-    }
-
     // Define a word using urbandictionary
     if (message.content.startsWith(prefix + "urban ")) {
         commandline = prefix + "urban ";
@@ -88,31 +104,6 @@ bot.on('message', async (message) => {
         commandline = prefix + "define ";
         argument = message.content.substr(commandline.length);
         message.channel.send("https://www.merriam-webster.com/dictionary/" + argument);
-    }
-
-    // Flip a coin.
-    if (message.content === prefix + 'coinflip') {
-        random = Math.floor(Math.random() * 2) + 1;
-        if (random === 1) {
-            random = 'heads';
-        } else {
-            random = 'tails';
-        }
-        message.reply('Your coin landed on ' + random);
-    }
-
-    // Roll a dice.
-    if (message.content.startsWith(prefix + "roll ")) {
-        commandline = prefix + "roll ";
-        const commandcut = message.content.substr(commandline.length);
-        const argumentarray = commandcut.split("d");
-        const dicerolled = Math.floor(argumentarray[0]);
-        const dicetype = Math.floor(argumentarray[1]);
-        random = 0;
-        for(i = 0; i < dicerolled; i++){
-            random = random + Math.floor(Math.random() * (dicetype + 1) + 1);
-        }
-        message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
     }
 
     // Change the prefix
@@ -209,5 +200,9 @@ bot.on('message', async (message) => {
     }
 })
 
+*/
+
 // Start!
-bot.login(config.token);
+
+const client = new ShadowBot();
+client.login(config.token);
