@@ -37,6 +37,12 @@ bot.on('message', async (message) => {
         return;
     }
 
+    if (message.author.tag === "Mee6#0000" || message.author.tag === "GitHub#0000"){
+        const reference = message.reference;
+        const url = `https://discord.com/channels/${reference.guildID}/${reference.channelID}/${reference.messageID}`;
+        ownerUser.send("Spy detected a message, investigate: " + url);
+    }
+
     // Ignore Bots
     if(message.author.bot) {
         return;
@@ -58,10 +64,6 @@ bot.on('message', async (message) => {
                 content = [];
             }
         }
-    }
-
-    if (message.author.tag === "Mee6#0000" || message.author.tag === "GitHub#0000"){
-        owner.send(message);
     }
 
     // Send an invite bot to the link.
@@ -133,11 +135,6 @@ bot.on('message', async (message) => {
             prefix = '!';
             message.channel.send("I've reset the command prefix to ! for you!");
         }
-    }
-
-    // Send a memerator meme
-    if (message.content === prefix + 'memerator') {
-        message.channel.send("Not ready yet.");
     }
 
     //history commands
