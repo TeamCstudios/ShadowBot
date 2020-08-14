@@ -25,7 +25,7 @@ I am currently using token ${config.token}.`)
 })
 
 // Go for it
-bot.on('message', (message) => {
+bot.on('message', async (message) => {
     let i;
     let random;
     let argument;
@@ -104,7 +104,7 @@ bot.on('message', (message) => {
         const dicetype = Math.floor(argumentarray[1]);
         random = 0;
         for(i = 0; i < dicerolled; i++){
-            random = random + Math.floor(Math.random(1,dicetype + 1));
+            random = random + Math.floor(Math.random() * (dicetype + 1) + 1);
         }
         message.reply("You rolled " + dicerolled + " " + dicetype + "-sided dice, and your total is " + random + ".");
     }
@@ -149,26 +149,26 @@ bot.on('message', (message) => {
     }
     // Grab a random quote from bot's memory.
     if (message.content === prefix + 'quote') {
-        random = Math.floor(Math.random(0,history.length));
+        random = Math.floor(Math.random() * history.length);
         const hist = history[random];
         let auth = hist.split(' ')[0];
         auth = auth.replace('[', '');
         auth = auth.replace(']', '');
         auth = auth.replace(':', '');
         const id = auth;
-        auth = bot.users.get(auth);
+        let user = await bot.users.fetch(auth);
         let msg = hist.split(':');
         msg.splice(0,1);
         msg = msg.join(":");
         msg = msg.substring(1);
-        const iconURL = `https://cdn.discordapp.com/avatars/${id}/${auth.avatar}.webp?size=1024`;
+        const iconURL = user.avatarURL();
         const embed = {
             "title": "Quote",
             "description": msg,
             "color": 2729288,
-            //"timestamp": new Date(),
+            // "timestamp": ,
             "author": {
-                "name": auth.tag,
+                "name": user.tag,
                 "icon_url": iconURL
             }
             //"fields": []
