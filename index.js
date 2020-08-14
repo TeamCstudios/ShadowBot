@@ -15,14 +15,14 @@ const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"];
 let ownerUser;
 
 // Prepare bot
-bot.on('ready', async () => {
-    ownerUser = await bot.users.fetch(owner);
+bot.on('ready' ,async () => {
+    ownerUser = await bot.users.fetch(owner)
 
-    console.log("It has been " + n + " milliseconds since Jan 1, 1970.");
-    console.log("No errors found during boot process.");
-    console.log("Welcome, " + ownerUser.tag + ".");
-    console.log("I am currently using token " + config.token + ".");
-});
+    console.log(`It has been ${n} milliseconds since Jan 1, 1970.
+No errors found during boot process.
+Welcome, ${ownerUser.tag}.
+I am currently using token ${config.token}.`)
+})
 
 // Go for it
 bot.on('message', (message) => {
