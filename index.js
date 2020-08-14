@@ -20,8 +20,7 @@ bot.on('ready' ,async () => {
 
     console.log(`It has been ${n} milliseconds since Jan 1, 1970.
 No errors found during boot process.
-Welcome, ${ownerUser.tag}.
-I am currently using token ${config.token}.`)
+Welcome, ${ownerUser.tag}.`)
 })
 
 // Go for it
