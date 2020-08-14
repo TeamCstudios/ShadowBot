@@ -38,6 +38,11 @@ bot.on('message', async (message) => {
         return;
     }
 
+    // Ignore Bots
+    if(message.author.bot) {
+        return;
+    }
+
     // This statement makes sure that the message is a valid message, then adds it to memory.
     if (!dontlog.includes(message.author.username) && !message.content.startsWith(prefix)) {
         history.push(message.author.id + ': ' + message.content);
