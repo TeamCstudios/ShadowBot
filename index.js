@@ -1,5 +1,6 @@
 // Define discord stuff
 const config = require('./config.json');
+const Prefix = require("./prefix");
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
 class ShadowBot extends AkairoClient {
@@ -12,7 +13,10 @@ class ShadowBot extends AkairoClient {
 
         this.commandHandler = new CommandHandler(this, {
             directory: './commands/',
-            prefix: '!'
+            prefix: () => {
+                return Prefix.getPrefix();
+            },
+            allowMention: true
         });
 
         this.listenerHandler = new ListenerHandler(this, {
@@ -26,27 +30,14 @@ class ShadowBot extends AkairoClient {
 }
 
 // Define bot startup thingies
-const owner = "116318819298967561";
 let history = [];
 const blacklist = [];
-let prefix = "!";
 const d = new Date();
 const n = d.getTime();
 const dontlog = ["CahBot", "DuckHunt", "ShadowBot", "Shadow Bot"];
 
 let ownerUser;
 
-// Prepare bot
-/*
-bot.on('ready' ,async () => {
-    ownerUser = await bot.users.fetch(owner)
-
-    console.log(`It has been ${n} milliseconds since Jan 1, 1970.
-No errors found during boot process.
-Welcome, ${ownerUser.tag}.`)
-})
-
- */
 
 // Go for it
 /*
@@ -92,53 +83,12 @@ bot.on('message', async (message) => {
         }
     }
 
-    // Define a word using urbandictionary
-    if (message.content.startsWith(prefix + "urban ")) {
-        commandline = prefix + "urban ";
-        argument = message.content.substr(commandline.length);
-        message.channel.send("https://www.urbandictionary.com/define.php?term=" + argument);
-    }
-
-    // Define a word using merriam-webster
-    if (message.content.startsWith(prefix + "define ")) {
-        commandline = prefix + "define ";
-        argument = message.content.substr(commandline.length);
-        message.channel.send("https://www.merriam-webster.com/dictionary/" + argument);
-    }
-
-    // Change the prefix
-    if (message.content.startsWith("%&!prefix ") && message.author.id === owner) {
-        commandline = "%&!prefix ";
-        argument = message.content.substr(commandline.length);
-        prefix = argument;
-        message.channel.send("I've set the prefix to " + prefix + " If you messed up, do %&!reset");
-    }
-
     //Blacklist a channel
     if (message.content.startsWith(prefix + "blacklist") && message.author.id === owner) {
         blacklist.push(message.channel);
         message.channel.send("I've blacklisted this channel. I will not respond to anything in the channel. However, I will still log this channel.")
     }
 
-    // Reset the prefix to !
-    if (message.content === '%&!reset' || message.content === '%&!resetprefix') {
-        if (message.author.id === owner) {
-            prefix = '!';
-            message.channel.send("I've reset the command prefix to ! for you!");
-        }
-    }
-
-    //history commands
-    if (message.content === prefix + 'history') {
-        message.channel.send("```\n" + prefix + "bw1: Story of Bagel War I.\n" + prefix + "bw2: Story of Bagel War II." + "\n```");
-    }
-
-    if (message.content === prefix + 'bw1') {
-        message.channel.send("One day, BobTheBagel joined an IRC chat. Soon, he became a menace to certain Minecraft servers. He also did nasty things, such as ''dating'' a 9 year old. Eventually, the person who made BobTheBagel was discovered. Bob has never really stopped, but isn't much of a threat anymore.");
-    }
-    if (message.content === prefix + 'bw2') {
-        message.channel.send("One day, a rant video appeared on Youtube called 'Team CStudios Rant' by a channel named JaredTheBagel. 'Jared' also stole several Team CStudios videos. Like Bob, his real-life identity was found, but this didn't seem to stop his online activity. After a second video, his activity mysteriously stopped, and he hasn't been seen again.");
-    }
     // Grab a random quote from bot's memory.
     if (message.content === prefix + 'quote') {
         random = Math.floor(Math.random() * history.length);
@@ -182,11 +132,6 @@ bot.on('message', async (message) => {
             history.shift();
         }
         message.channel.send(argument + " items of history have been removed.");
-    }
-
-    // Show all commands
-    if (message.content === prefix + 'help' || message.content === prefix + 'info' || message.content === prefix + 'commands') {
-        message.reply("```\n" + "Commands:" + "\n" + prefix + "help/info/commands: Show all commands." + "\n" + prefix + "quote: Quote a random message from this channel!" + "\n" + prefix + "roll #dx: Roll # of x-sided dice. Example: '" + prefix + "roll 4d6' rolls 4 six-sided dice." + "\n" + prefix + "coinflip: Flip a coin." + "\n" + prefix + "define [word]: Define a word." + "\n" + prefix + "urban [word]: Define a word using Urban Dictionary." + "\n" + prefix + "repo: Link the repo." + "\n" + prefix + "join: Send server join link." + "\n" + prefix + "history: Show history commands." + "\n" + prefix + "memerator: Show a random memerator meme." + "\n" + prefix + "uptime: Show uptime." + "\n" + prefix + "blacklist: Stop bot from responding in a channel. (Owner Only)" + "\n" + prefix + "retrieve-history: Send memory to owner (Owner Only)" + "\n" + prefix + "prunehistory [x]: Delete the first x item(s) of history (Owner Only)" + "\n" + prefix + "purgehistory: Delete all of history (Owner Only)" + "\n" + "%&!prefix [prefix]: Change the command prefix. (Owner Only)" + "\n" + "%&!reset: Reset the command prefix to !. (Owner Only)```");
     }
 
     // Return the bot's uptime in hours.

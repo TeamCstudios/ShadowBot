@@ -8,10 +8,12 @@ class ReadyListener extends Listener {
         });
     }
 
-    exec() {
+    async exec() {
+        let ownerUser = await this.client.users.fetch(this.client.ownerID.toLowerCase())
+
         console.log(`It has been ${this.n} milliseconds since Jan 1, 1970.
 No errors found during boot process.
-Welcome.`)
+Welcome, ${ownerUser.tag}`)
     }
 }
 
