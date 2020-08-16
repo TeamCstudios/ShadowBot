@@ -10,7 +10,7 @@ module.exports = n;
 class ShadowBot extends AkairoClient {
     constructor() {
         super({
-            ownerID: '476488167042580481'
+            ownerID: '116318819298967561'
         }, {
             disableMentions: 'everyone'
         });
