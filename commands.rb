@@ -1,16 +1,8 @@
 # Get lines
-File.open('index.js', 'r') do |he|
-  he.each_line do |f|
-    next unless f.include?('prefix +') && f.include?('message.content')
+Dir["#{File.dirname(__FILE__)}/commands/*.js"].sort.each do |wow|
+  File.readlines(wow).each do |line|
+    next unless line.include? 'super'
 
-    line = f.split('prefix + ')
-    comm = line[1]
-    if(comm.split("'").length == 1)
-      command = comm.split('"')[1]
-    else
-      command = comm.split("'")[1]
-    end
-
-    puts "#{command.gsub(' ', '')}"
+    puts line.split(" super('")[1].split("', {")[0]
   end
 end
