@@ -3,3 +3,4 @@ package-lock.json
 config.json
 _site/
 Gemfile.lock
+.idea/
