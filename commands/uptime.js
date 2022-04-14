@@ -12,9 +12,13 @@ class UptimeCommand extends Command {
         const x = new Date();
         const l = x.getTime();
         const uptime = l - n;
-        const z = uptime / 1000 / 60 / 60;
-        const zx = (Math.floor(z * 10000)) / 10000;
-        message.reply("I have been up for " + zx + " hours.");
+
+        const days = Math.floor(uptime / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(uptime / (1000 * 60 * 60));
+        const minutes = Math.floor(uptime / (1000 * 60));
+        const seconds = Math.floor(uptime / 1000);
+
+        message.reply(`I have been up for ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`);
     }
 }
 
